@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2021-06-02T10:59:15 IST" name="Default suite" finished-at="2021-06-02T10:59:38 IST" duration-ms="23068">
+    <groups>
+    </groups>
+    <test started-at="2021-06-02T10:59:15 IST" name="Default test" finished-at="2021-06-02T10:59:38 IST" duration-ms="23068">
+      <class name="com.fb.account.setUp.UserProfile">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.fb.account.setUp.UserProfile@20ccf40b]" started-at="2021-06-02T10:59:15 IST" name="setUp" finished-at="2021-06-02T10:59:35 IST" duration-ms="19565" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="ClickOnAbout()[pri:0, instance:com.fb.account.setUp.UserProfile@20ccf40b]" started-at="2021-06-02T10:59:35 IST" name="ClickOnAbout" finished-at="2021-06-02T10:59:38 IST" duration-ms="3339" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ClickOnAbout -->
+      </class> <!-- com.fb.account.setUp.UserProfile -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
