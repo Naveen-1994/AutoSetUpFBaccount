@@ -1,5 +1,7 @@
 package com.fb.account.pages;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -92,11 +94,13 @@ public class ProfilePage extends SetupBase{
 	
 /* ------------- add profile photo element details -----------*/	
 	
-	@FindBy(xpath="//i[@class='hu5pjgll lzf7d6o1 sp_kYKtxq_F10w sx_ba37a5']")
+	@FindBy(xpath="//div[@aria-label='Update profile picture'][@role='button']/i")
 	WebElement pPhoto;
 	
 	@FindBy(xpath="//span[text()='Upload Photo']")
 	WebElement uploadpPhoto;
+	
+	
 	
 /* ------------- add cover photo element details -----------*/	
 	
@@ -240,6 +244,16 @@ public class ProfilePage extends SetupBase{
 		driver.findElement(By.xpath("//span[text()='"+relSt+"']")).click();
 		saveButton.click();
 		
+	}
+	
+	public void uploadPPic() throws InterruptedException, IOException
+	{
+		pPhoto.click();
+		uploadpPhoto.click();
+		Thread.sleep(5000);
+		Runtime.getRuntime().exec("C:\\Users\\Naveen\\Downloads\\Programs\\WorkBench\\SetUpAccount\\"
+				+ "src\\main\\java\\com\\fb\\account\\util\\UploadDpforFB.exe");
+		saveButton.click();
 	}
 	
 

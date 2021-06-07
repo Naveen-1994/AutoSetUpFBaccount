@@ -2,6 +2,8 @@ package com.fb.account.setUp;
 
 
 
+import java.io.IOException;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -111,6 +113,12 @@ public class UserProfile extends SetupBase{
 	public void addRelationshipStatus(String relSt)
 	{
 		profilepage.addRelationshipStatus(relSt);
+	}
+	
+	@Test(priority=7)
+	public void uploadProfilePic() throws InterruptedException, IOException
+	{
+		profilepage.uploadPPic();
 	}
 	
 	@AfterMethod
