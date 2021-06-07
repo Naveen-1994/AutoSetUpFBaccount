@@ -32,50 +32,30 @@ public class ProfilePage extends SetupBase{
 	WebElement current;
 	
 	@FindBy(xpath="//span[text()='Year']")
-	WebElement fromYear;
-	
-	@FindBy(xpath="//span[text()='2018']")
-	WebElement year;
+	WebElement clickOnYear;
 	
 	@FindBy(xpath="//span[text()='Month']")
-	WebElement fromMonth;
+	WebElement clickOnMonth;
 	
-	@FindBy(xpath="//span[text()='January']")
-	WebElement month;
+	@FindBy(xpath="//span[text()='Day']")
+	WebElement clickOnDay;
 	
 	@FindBy(xpath="//span[text()='Save']")
 	WebElement saveButton;
 	
-/* ----------------- school details page element details --------------------*/
+/* ----------------- school & University details page element details --------------------*/
 	
 	@FindBy(xpath="//span[text()='Add a high school']")
 	WebElement addSchool;
 	
-/* -----------------generic for school and university ------------------*/	
+	@FindBy(xpath="//span[text()='Work and education']")
+	WebElement eductnTab;
+	
 	@FindBy(xpath="//input[@dir='ltr'][@aria-label='School']")
 	WebElement schoolName;
-	
-	@FindBy(xpath="(//span[text()='Year'])[1]")
-	WebElement schfrmYear;
-	
-	@FindBy(xpath="//span[text()='2012']")
-	WebElement addschfrmYear;
-	
-	@FindBy(xpath="(//span[text()='Year'])[2]")
-	WebElement schtoYear;
-	
-	@FindBy(xpath="//span[text()='2015']")
-	WebElement addschtoYear;
 
-/* ------------------ University details Page element details ---------------------*/
 	@FindBy(xpath="//span[text()='Add a university']")
 	WebElement adduniversity;
-	
-	@FindBy(xpath="//span[text()='2015']")
-	WebElement addsUnifrmYear;
-	
-	@FindBy(xpath="//span[text()='2018']")
-	WebElement addUnitoYear;
 	
 	@FindBy(name="is_current")
 	WebElement graduated;
@@ -96,7 +76,7 @@ public class ProfilePage extends SetupBase{
 	@FindBy(xpath="//span[text()='Add home town']")
 	WebElement addHomeTown;
 	
-	@FindBy(id="//input[@dir='ltr'][@aria-label='Home town']")
+	@FindBy(xpath="//input[@dir='ltr'][@aria-label='Home town']")
 	WebElement hTown;
 	
 /* ------------- add relationship page element details ------------*/
@@ -110,7 +90,7 @@ public class ProfilePage extends SetupBase{
 	@FindBy(xpath="//span[text()='Single']")
 	WebElement relStatusSelect;
 	
-/* ------------- add profile phot element details -----------*/	
+/* ------------- add profile photo element details -----------*/	
 	
 	@FindBy(xpath="//i[@class='hu5pjgll lzf7d6o1 sp_kYKtxq_F10w sx_ba37a5']")
 	WebElement pPhoto;
@@ -164,64 +144,100 @@ public class ProfilePage extends SetupBase{
 	}
 		
 	
-	public void addWorkplace()
+	public void addWorkplace(String cmpny, String pos, String city, String yr, String mnth, String day)
 	{
 		addworkplace.click();
-		company.sendKeys("SericeNow", Keys.ENTER);
-		position.sendKeys("QA", Keys.ENTER);
-		wcity.sendKeys("Bangalore", Keys.ENTER);
-		current.click();
-		fromYear.click();
-		year.click();
-		fromMonth.click();
-		month.click();
+		company.sendKeys(cmpny, Keys.ENTER);
+		position.sendKeys(pos, Keys.ENTER);
+		wcity.sendKeys(city, Keys.ENTER);
+		
+		/************ Adding year details **************/
+		clickOnYear.click();
+		driver.findElement(By.xpath("//span[text()='"+yr+"']")).click();
+		clickOnMonth.click();
+		driver.findElement(By.xpath("//span[text()='"+mnth+"']")).click();
+		clickOnDay.click();
+		driver.findElement(By.xpath("//span[text()='"+day+"']")).click();
 		saveButton.click();
 	}
 	
-	public void addSchool()
+	public void addSchool(String schname, String frmYr, String fromMnt, String frmday, String toYr, String toMnt, String today) throws InterruptedException
 	{
+		eductnTab.click();
+		Thread.sleep(5000);
 		addSchool.click();
-		schoolName.sendKeys("St. Mary's Higher Primary School", Keys.ENTER);
-		schfrmYear.click();
-		addschfrmYear.click();
-		schtoYear.click();
-		addschtoYear.click();
+		schoolName.sendKeys(schname, Keys.ENTER);
+		
+		/******** Adding from year details ***********/
+		clickOnYear.click();
+		driver.findElement(By.xpath("//span[text()='"+frmYr+"']")).click();
+		clickOnMonth.click();
+		driver.findElement(By.xpath("//span[text()='"+fromMnt+"']")).click();
+		clickOnDay.click();
+		driver.findElement(By.xpath("//span[text()='"+frmday+"']")).click();
+
+		/*********** Adding to year details *********/
+		clickOnYear.click();
+		driver.findElement(By.xpath("//span[text()='"+toYr+"']")).click();
+		clickOnMonth.click();
+		driver.findElement(By.xpath("//span[text()='"+toMnt+"']")).click();
+		clickOnDay.click();
+		driver.findElement(By.xpath("//span[text()='"+today+"']")).click();
+	
 		saveButton.click();
 	}
 	
-	public void addUniversity()
+	public void addUniversity(String uniName, String frmYr, String frmMnt, String fromday, String toYr, String toMnt, String today, String corsenme, String degnme) throws InterruptedException
 	{
+		eductnTab.click();
+		Thread.sleep(5000);
 		adduniversity.click();
-		schoolName.sendKeys("CIT Ponnampet", Keys.ENTER);
-		schfrmYear.click();
-		addsUnifrmYear.click();
-		schtoYear.click();
-		addUnitoYear.click();
+		schoolName.sendKeys(uniName, Keys.ENTER);
+		
+		/******** Adding from year details ***********/
+		clickOnYear.click();
+		driver.findElement(By.xpath("//span[text()='"+frmYr+"']")).click();
+		clickOnMonth.click();
+		driver.findElement(By.xpath("//span[text()='"+frmMnt+"']")).click();
+		clickOnDay.click();
+		driver.findElement(By.xpath("//span[text()='"+fromday+"']")).click();
+		
+		/*********** Adding to year details *********/
+		clickOnYear.click();
+		driver.findElement(By.xpath("//span[text()='"+toYr+"']")).click();
+		clickOnMonth.click();
+		driver.findElement(By.xpath("//span[text()='"+toMnt+"']")).click();
+		clickOnDay.click();
+		driver.findElement(By.xpath("//span[text()='"+today+"']")).click();
+		
 		graduated.click();
-		course1.sendKeys("electronics & Comms", Keys.ENTER);
-		degree.sendKeys("BE", Keys.ENTER);
+		course1.sendKeys(corsenme, Keys.ENTER);
+		degree.sendKeys(degnme, Keys.ENTER);
 		saveButton.click();
 	}
 	
-	public void addcurrentCity()
+	public void addcurrentCity(String curCity)
 	{
 		addCurrentCity.click();
-		cTown.sendKeys("Bangalore", Keys.ENTER);
+		cTown.sendKeys(curCity);
+		driver.findElement(By.xpath("//span[contains(text(),'"+curCity+"')]")).click();;
 		saveButton.click();
 	}
 	
-	public void addHometown()
+	public void addHometown(String homeTwn)
 	{
 		addHomeTown.click();
-		hTown.sendKeys("Kundapur", Keys.ENTER);
+		hTown.sendKeys(homeTwn);
+		driver.findElement(By.xpath("//span[contains(text(),'"+homeTwn+"')]")).click();;
 		saveButton.click();
 	}
 	
-	public void addRelationshipStatus()
+	public void addRelationshipStatus(String relSt)
 	{
 		addRelStatus.click();
 		relStatus.click();
-		relStatusSelect.click();
+		//relStatusSelect.click();
+		driver.findElement(By.xpath("//span[text()='"+relSt+"']")).click();
 		saveButton.click();
 		
 	}
